@@ -5,8 +5,7 @@ import store from './store'
 import cookie from 'js-cookie';
 import api from './api/index'
 import '../src/assets/css/common.css'
-import {Menu,Submenu,MenuItemGroup,MenuItem,Dropdown,DropdownMenu,DropdownItem,Breadcrumb,BreadcrumbItem} from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
+import {Menu,Submenu,MenuItemGroup,MenuItem,Dropdown,DropdownMenu,DropdownItem,Breadcrumb,BreadcrumbItem,FormItem,Form,Input,Button} from 'element-ui';
 import '@/assets/css/element-variables.scss'
 
 //禁止产生消息
@@ -25,7 +24,10 @@ Vue.use(DropdownMenu);
 Vue.use(DropdownItem);
 Vue.use(Breadcrumb);
 Vue.use(BreadcrumbItem);
-
+Vue.use(FormItem);
+Vue.use(Form);
+Vue.use(Input);
+Vue.use(Button);
 
 
 

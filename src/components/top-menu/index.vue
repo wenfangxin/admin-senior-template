@@ -4,8 +4,10 @@
       <i @click="changeSidebar" class="iconfont" :class="$store.state.app.menuIcon"></i>
       <div style="margin-left: 30px">
         <el-breadcrumb>
-          <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-          <el-breadcrumb-item v-if="$route.path !== '/home'">{{ $route.meta.title }}</el-breadcrumb-item>
+          <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>
+          <el-breadcrumb-item v-for="(item, index) in matched" :key="index">{{
+              item.meta.title
+            }}</el-breadcrumb-item>
         </el-breadcrumb>
       </div>
     </div>
@@ -34,17 +36,33 @@
 
 <script>
 import {resetRouter} from '@/router'
+
 export default {
   name: "index",
   data() {
     return {
+      matched:null,
       fullscreen: false  // 是否全屏
     }
   },
+  watch: {
+    $route() {
+      this.getBreadcrumb();
+    }
+  },
   mounted() {
-   // console.log(this.$route)
+    this.getBreadcrumb()
   },
   methods: {
+    /**
+     * 根据路由获取面包屑
+     */
+    getBreadcrumb() {
+      this.matched = this.$route.matched.filter(
+          (item) => item.meta && item.meta.title && item.path != "/home"
+      );
+    },
+
     /**
      * 折叠菜单
      */

@@ -17,4 +17,13 @@
   .el-submenu .el-menu-item{
     background-color: #1f2d3d!important;
   }
+  /*划过菜单变色*/
+  .el-submenu .el-menu-item:hover{
+    background-color: #001528!important;
+  }
+  /*菜单收缩样式*/
+  .el-menu--collapse{
+    height: 100%;
+    overflow-y: scroll;
+  }
 </style>

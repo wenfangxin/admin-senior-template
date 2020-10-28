@@ -1,4 +1,5 @@
 import cookie from 'js-cookie';
+import { Loading } from 'element-ui';
 export default {
     namespaced: true,
     state: {
@@ -75,24 +76,23 @@ export default {
                     {
                         path: "/auth",
                         name: "auth",
-                        component: 'auth',
                         meta:{
                             title: "权限管理",
                             icon: "icon-quanxian"
                         },
                         children: [
                             {
-                                path: "/auth/a",
+                                path: "a",
                                 name: 'a',
-                                component: 'auth/a',
+                                component: 'a',
                                 meta:{
                                     title: "权限管理A"
                                 }
                             },
                             {
-                                path: "/auth/b",
+                                path: "b",
                                 name: 'b',
-                                component: 'auth/b',
+                                component: 'b',
                                 meta:{
                                     title: "权限管理B"
                                 }
@@ -101,8 +101,15 @@ export default {
                         ]
                     }
                 ];
+                //全屏loading
+                let loadingInstance = Loading.service({
+                    lock: true,
+                    text: '拼命加载中',
+                    background: 'rgb(249 249 249 / 56%)'
+                });
                 setTimeout(()=>{
                     commit('SET_MENU_ROUTE',menuRoute)
+                    loadingInstance.close();
                     resolve(menuRoute)
                 },400)
             })

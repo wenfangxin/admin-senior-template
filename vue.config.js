@@ -1,3 +1,5 @@
+const Timestamp = new Date().getTime();
+
 module.exports = {
     /* 部署生产环境和开发环境下的URL：可对当前环境进行区分，baseUrl 从 Vue CLI 3.3 起已弃用，要使用publicPath */
     /* baseUrl: process.env.NODE_ENV === 'production' ? './' : '/' */
@@ -25,4 +27,20 @@ module.exports = {
         // proxy:"http://api.joooyoo.com",
 
     },
+    // 第三方插件配置
+    pluginOptions: {},
+    //给打包文件添加版本号 防止浏览器缓存更新不及时
+    configureWebpack: {
+        output: {
+            filename: `assets/js/[name].${Timestamp}.js`, // 每次构建打包时给文件名加上时间戳，确保每次版本更新的文件名不一样
+            chunkFilename: `assets/js/[name].${Timestamp}.js`
+        },
+    },
+    css:{
+        extract:{
+            // 修改打包后css文件名
+            filename: `assets/css/[name].${Timestamp}.css`,
+            chunkFilename: `assets/css/[name].${Timestamp}.css`
+        }
+    }
 }

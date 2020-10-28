@@ -13,7 +13,9 @@ export const getAsyncRoutes = (routes) => {
     // 遍历路由数组去重组可用的路由
     routes.forEach(item => {
         const newItem = {};
-        newItem.component = (() => import(`@/views/${item.component}/index.vue`));
+        if(item.component){
+            newItem.component = (() => import(`@/views/${item.component}/index.vue`));
+        }
         for (const key in item) {
             if (keys.includes(key)) {
                 newItem[key] = item[key]

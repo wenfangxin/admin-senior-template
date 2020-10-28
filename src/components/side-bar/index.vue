@@ -8,7 +8,7 @@
         text-color="#bfcbd9"
         :router="true"
         active-text-color="#409eff">
-      <template v-for="(route) in $store.state.user.menuRoute">
+      <template v-for="route in $store.state.user.menuRoute">
         <el-menu-item :index="route.path" v-if="!route.children">
           <i class="iconfont" :class="route.meta.icon"></i>
           <span slot="title">{{ route.meta.title }}</span>
@@ -18,7 +18,7 @@
             <i class="iconfont" :class="route.meta.icon"></i>
             <span slot="title">{{ route.meta.title }}</span>
           </template>
-          <el-menu-item  v-for="item in route.children" :index="item.path" :key="item.path">{{ item.meta.title }}</el-menu-item>
+          <el-menu-item  v-for="item in route.children" :index="route.path+'/'+item.path" :key="item.path">{{ item.meta.title }}</el-menu-item>
         </el-submenu>
       </template>
     </el-menu>

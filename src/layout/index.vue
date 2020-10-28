@@ -56,7 +56,6 @@ export default {
   height: 100%;
   box-sizing: border-box;
   position: relative;
-  background: #5a5e66;
   .contentBto {
     overflow-y: scroll;
     height: calc(100% - 50px);
