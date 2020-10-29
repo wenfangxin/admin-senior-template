@@ -1,24 +1,25 @@
 <template>
   <div>
-    <div>{{$store.state.user.userId}}</div>
-    <div>{{$store.state.user.token}}</div>
-    11111
+    <div><el-input v-model="user"/></div>
+    <div><el-input v-model="pwd"/></div>
+    <button>登录</button>
   </div>
 
 </template>
 <script>
-    export default {
-        name:'index',
-        data () {
-            return {
-
-            }
-        },
-      mounted() {
-
-      },
-      methods: {
-
-        }
+export default {
+  name: 'index',
+  data() {
+    return {
+      user:'',
+      pwd:''
     }
+  },
+  mounted() {
+
+  },
+  methods: {
+
+  }
+}
 </script>

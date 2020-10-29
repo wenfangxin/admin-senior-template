@@ -7,7 +7,9 @@ import api from './api/index'
 import '../src/assets/css/common.css'
 import {Menu,Submenu,MenuItemGroup,MenuItem,Dropdown,DropdownMenu,DropdownItem,Breadcrumb,BreadcrumbItem,FormItem,Form,Input,Button} from 'element-ui';
 import '@/assets/css/element-variables.scss'
+import IM from './utils/webim'
 
+Vue.use(IM)
 //禁止产生消息
 Vue.config.productionTip = false;
 //挂在cookie到vue原型可全局访问

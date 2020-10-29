@@ -1,13 +1,14 @@
 import cookie from 'js-cookie';
-import { Loading } from 'element-ui';
+import {Loading} from 'element-ui';
 import Layout from "@/layout/index";
+
 export default {
     namespaced: true,
     state: {
         userId: cookie.get('userId'),
         token: cookie.get('token'),
         // menuRoute: JSON.parse(sessionStorage.getItem('menuRoute'))
-        menuRoute:[]
+        menuRoute: []
 
     },
     mutations: {
@@ -34,11 +35,11 @@ export default {
         userLogin({commit}, data) {
             return new Promise((resolve, reject) => {
                 // api.user.login(data).then(res => {
-                    commit('SET_TOKEN', 111);
-                    cookie.set('token',111);
-                    commit('SET_USER_ID',111);
-                    cookie.set('userId', 111);
-                    resolve()
+                commit('SET_TOKEN', 111);
+                cookie.set('token', 111);
+                commit('SET_USER_ID', 111);
+                cookie.set('userId', 111);
+                resolve()
                 // }).catch(error => {
                 //     reject(error)
                 // })
@@ -69,12 +70,13 @@ export default {
                         path: '/',
                         component: 'layout',
                         redirect: '/home',
+                        nesting:false,
                         children: [
                             {
-                                path: "/home",
+                                path: "home",
                                 name: "home",
                                 component: 'home',
-                                meta:{
+                                meta: {
                                     icon: "icon-shouye",
                                     title: "首页"
                                 }
@@ -86,7 +88,8 @@ export default {
                         name: "auth",
                         component: 'layout',
                         redirect: '/auth/menu-setting',
-                        meta:{
+                        nesting:true,
+                        meta: {
                             title: "权限管理",
                             icon: "icon-quanxian"
                         },
@@ -94,20 +97,28 @@ export default {
                             {
                                 path: "menu-setting",
                                 name: 'menu-setting',
-                                component: 'menu-setting',
-                                meta:{
+                                component: 'auth/menu-setting',
+                                meta: {
                                     title: "菜单设置"
                                 }
-                            },
+                            }
+                        ]
+                    },
+                    {
+                        path: '/',
+                        component: 'layout',
+                        redirect: '/web-im',
+                        nesting:false,
+                        children: [
                             {
                                 path: "web-im",
                                 name: 'web-im',
                                 component: 'web-im',
-                                meta:{
-                                    title: "即时通讯"
+                                meta: {
+                                    title: "即时通讯",
+                                    icon:'icon-liaotian'
                                 }
                             },
-
                         ]
                     }
                 ];
@@ -117,11 +128,11 @@ export default {
                     text: '拼命加载中',
                     background: '#ffffff'
                 });
-                setTimeout(()=>{
-                    commit('SET_MENU_ROUTE',menuRoute)
+                setTimeout(() => {
+                    commit('SET_MENU_ROUTE', menuRoute)
                     loadingInstance.close();
                     resolve(menuRoute)
-                },400)
+                }, 400)
             })
         }
     },

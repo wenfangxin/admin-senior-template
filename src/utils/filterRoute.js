@@ -8,7 +8,7 @@ import router from "@/router";
 export const getAsyncRoutes = (routes) => {
     const res = []
     // 定义路由中需要的自定名
-    const keys = ['path', 'name', 'children', 'redirect', 'meta']
+    const keys = ['path', 'name', 'children', 'redirect', 'meta','nesting']
     // 遍历路由数组去重组可用的路由
     routes.forEach(item => {
         const newItem = {};

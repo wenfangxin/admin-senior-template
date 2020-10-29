@@ -9,11 +9,11 @@
         :router="true"
         active-text-color="#409eff">
       <template v-for="route in $store.state.user.menuRoute">
-        <el-menu-item :index="route.redirect" v-if="route.children.length==1">
+        <el-menu-item :index="route.redirect" v-if="!route.nesting">
           <i class="iconfont" :class="route.children[0].meta.icon"></i>
           <span slot="title">{{ route.children[0].meta.title }}</span>
         </el-menu-item>
-        <el-submenu :index="route.path" v-if="route.children.length>1">
+        <el-submenu :index="route.path" v-if="route.nesting">
           <template slot="title">
             <i class="iconfont" :class="route.meta.icon"></i>
             <span slot="title">{{ route.meta.title }}</span>
