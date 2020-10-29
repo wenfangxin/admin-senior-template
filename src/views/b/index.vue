@@ -11,7 +11,9 @@
             return{
             }
         },
-        methods: {
+      mounted() {
+      },
+      methods: {
 
         }
     }

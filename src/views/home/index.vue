@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <div style="width: 300px;height: 400px;">1</div>
+    <div style="width: 300px;height: 400px;">权限管理</div>
     <div style="width: 300px;height: 400px;">1</div>
 
     <div style="width: 300px;height: 400px;">1</div>
@@ -19,6 +19,7 @@ export default {
   },
   components: {},
   mounted() {
+    console.log(this.$router)
 
   },
   methods: {}

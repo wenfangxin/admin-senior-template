@@ -1,5 +1,6 @@
 import cookie from 'js-cookie';
 import { Loading } from 'element-ui';
+import Layout from "@/layout/index";
 export default {
     namespaced: true,
     state: {
@@ -65,17 +66,26 @@ export default {
             return new Promise((resolve, reject) => {
                 let menuRoute = [
                     {
-                        path: "/home",
-                        name: "home",
-                        component: 'home',
-                        meta:{
-                            icon: "icon-shouye",
-                            title: "首页"
-                        }
+                        path: '/',
+                        component: 'layout',
+                        redirect: '/home',
+                        children: [
+                            {
+                                path: "/home",
+                                name: "home",
+                                component: 'home',
+                                meta:{
+                                    icon: "icon-shouye",
+                                    title: "首页"
+                                }
+                            },
+                        ]
                     },
                     {
                         path: "/auth",
                         name: "auth",
+                        component: 'layout',
+                        redirect: '/auth/a',
                         meta:{
                             title: "权限管理",
                             icon: "icon-quanxian"

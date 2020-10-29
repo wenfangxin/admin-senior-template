@@ -1,5 +1,4 @@
 import store from "@/store";
-import Layout from "@/layout/index";
 import router from "@/router";
 /**
  * 重写路由表过滤方法
@@ -14,7 +13,11 @@ export const getAsyncRoutes = (routes) => {
     routes.forEach(item => {
         const newItem = {};
         if(item.component){
-            newItem.component = (() => import(`@/views/${item.component}/index.vue`));
+            if(item.component == 'layout'){
+                newItem.component = (() => import(`@/${item.component}/index.vue`));
+            }else{
+                newItem.component = (() => import(`@/views/${item.component}/index.vue`));
+            }
         }
         for (const key in item) {
             if (keys.includes(key)) {
@@ -48,13 +51,7 @@ export const  setStorageRoutes = async ()=>{
     }
     const menu =  getAsyncRoutes(menuRoute);
         router.addRoutes([
-            {
-                path: '/',
-                component: Layout,
-                redirect: '/home',
-                meta: {requireAuth: true},
-                children: menu
-            },
+            menu,
             {
                 path: '*',
                 name: 'NotFind',
@@ -74,14 +71,10 @@ export const  setStorageRoutes = async ()=>{
 export const  setAsyncRoutes = async ()=>{
     let menuRoute =  await store.dispatch('user/getUserInfo');
     const menu =  getAsyncRoutes(menuRoute);
-        router.addRoutes([
-            {
-                path: '/',
-                component: Layout,
-                redirect: '/home',
-                meta: {requireAuth: true},
-                children: menu
-            },
+    console.log(menu)
+
+    router.addRoutes([
+            ...menu,
             {
                 path: '*',
                 name: 'NotFind',

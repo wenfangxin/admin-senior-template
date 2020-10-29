@@ -32,7 +32,7 @@ export default {
 <style lang="scss" scoped>
 /*vue过渡动画*/
 .fade-enter-active, .fade-leave-active {
-  transition: opacity 1s
+  transition: opacity 0s
 }
 
 .fade-enter, .fade-leave-to {

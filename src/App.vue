@@ -6,7 +6,7 @@
 
 <style lang="scss">
   #nprogress .bar {
-    background: #7b98b5 !important; //路由进度条自定义颜色
+    background: #409eff !important; //路由进度条自定义颜色
   }
   #app{
     width: 100%;
@@ -26,4 +26,5 @@
     height: 100%;
     overflow-y: scroll;
   }
+
 </style>

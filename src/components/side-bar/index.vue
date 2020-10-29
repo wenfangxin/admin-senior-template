@@ -9,11 +9,11 @@
         :router="true"
         active-text-color="#409eff">
       <template v-for="route in $store.state.user.menuRoute">
-        <el-menu-item :index="route.path" v-if="!route.children">
-          <i class="iconfont" :class="route.meta.icon"></i>
-          <span slot="title">{{ route.meta.title }}</span>
+        <el-menu-item :index="route.redirect" v-if="route.children.length==1">
+          <i class="iconfont" :class="route.children[0].meta.icon"></i>
+          <span slot="title">{{ route.children[0].meta.title }}</span>
         </el-menu-item>
-        <el-submenu :index="route.path" v-if="route.children">
+        <el-submenu :index="route.path" v-if="route.children.length>1">
           <template slot="title">
             <i class="iconfont" :class="route.meta.icon"></i>
             <span slot="title">{{ route.meta.title }}</span>
@@ -45,9 +45,11 @@ export default {
   width:210px;
   height: 100%;
   overflow-y: scroll;
+  font-weight: 400 !important;
 }
 
 .sideBar {
+  font-weight: 400!important;
   .iconfont{
     margin-right: 15px;
   }
