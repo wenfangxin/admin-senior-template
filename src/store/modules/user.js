@@ -85,26 +85,26 @@ export default {
                         path: "/auth",
                         name: "auth",
                         component: 'layout',
-                        redirect: '/auth/a',
+                        redirect: '/auth/menu-setting',
                         meta:{
                             title: "权限管理",
                             icon: "icon-quanxian"
                         },
                         children: [
                             {
-                                path: "a",
-                                name: 'a',
-                                component: 'a',
+                                path: "menu-setting",
+                                name: 'menu-setting',
+                                component: 'menu-setting',
                                 meta:{
-                                    title: "权限管理A"
+                                    title: "菜单设置"
                                 }
                             },
                             {
-                                path: "b",
-                                name: 'b',
-                                component: 'b',
+                                path: "web-im",
+                                name: 'web-im',
+                                component: 'web-im',
                                 meta:{
-                                    title: "权限管理B"
+                                    title: "即时通讯"
                                 }
                             },
 
@@ -115,7 +115,7 @@ export default {
                 let loadingInstance = Loading.service({
                     lock: true,
                     text: '拼命加载中',
-                    background: 'rgb(249 249 249 / 56%)'
+                    background: '#ffffff'
                 });
                 setTimeout(()=>{
                     commit('SET_MENU_ROUTE',menuRoute)

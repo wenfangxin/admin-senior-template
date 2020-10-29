@@ -9,6 +9,7 @@
   "dependencies": {
     "axios": "^0.19.2",
     "core-js": "^3.6.4",
+    "easemob-websdk": "^3.3.2",
     "element-ui": "^2.13.1",
     "form-making": "^1.2.8",
     "js-cookie": "^2.2.1",

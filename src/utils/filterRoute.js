@@ -71,8 +71,6 @@ export const  setStorageRoutes = async ()=>{
 export const  setAsyncRoutes = async ()=>{
     let menuRoute =  await store.dispatch('user/getUserInfo');
     const menu =  getAsyncRoutes(menuRoute);
-    console.log(menu)
-
     router.addRoutes([
             ...menu,
             {
